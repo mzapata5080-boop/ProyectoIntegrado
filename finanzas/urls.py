@@ -3,7 +3,7 @@ from .views import *
 
 
 urlpatterns = [
-
+    
     # Listado de clientes
     path(
         "clientes/",
