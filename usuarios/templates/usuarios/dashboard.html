@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel Principal - Frío y Agroindustria SpA{% endblock %}
+
+{% block content %}
+<div class="dashboard-container">
+    <h2>Bienvenido, {{ user.username }}</h2>
+    
+    <!-- Mostrar el rol-->
+    <p>Tu rol en el sistema es: <strong>{{ user.get_rol_display }}</strong></p>
+    
+    <hr>
+
+    <!-- redireccion segun rl rol -->
+    <div class="modulos-acceso">
+        {% if user.rol == 'gerencia' %}
+            <p>✅ Acceso habilitado a: Reportes e Indicadores Financieros.</p>
+            
+        {% elif user.rol == 'bodega' %}
+            <p>✅ Acceso habilitado a: Gestión de Inventario y Obras.</p>
+            
+        {% elif user.rol == 'finanzas' %}
+            <p>✅ Acceso habilitado a: Facturación, Clientes y Proveedores.</p>
+
+        {% endif %}
+    </div>
+
+    <br>
+    <a href="{% url 'usuarios:logout' %}" style="color: red; font-weight: bold;">Cerrar Sesión</a>
+</div>
+{% endblock %}
