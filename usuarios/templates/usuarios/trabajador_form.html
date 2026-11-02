@@ -1,0 +1,7 @@
+<h2>Formulario de Trabajador</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Guardar</button>
+    <a href="{% url 'trabajador_list' %}">Cancelar</a>
+</form>
